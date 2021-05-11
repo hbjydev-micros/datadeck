@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node dist/index.js",
     "dev:backend": "nodemon src/index.ts",
-    "dev:frontend": "",
+    "dev:frontend": "webpack --config webpack.config.js --watch",
     "build": "npm run build:backend && npm run build:frontend",
     "build:backend": "tsc",
     "build:frontend": "webpack --config webpack.config.js",
@@ -47,6 +47,7 @@
     "babel-loader": "^8.2.2",
     "compression-webpack-plugin": "^7.1.2",
     "css-loader": "^5.2.4",
+    "cssnano": "^5.0.2",
     "eslint": "^7.26.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-config-standard-with-typescript": "^20.0.0",

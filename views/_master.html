@@ -6,7 +6,13 @@
         {% block head %}{% endblock %}
     </head>
     <body>
+        <header></header>
 
+        <main class="d-flex flex-col">
+            {% block content %}{% endblock %}
+        </main>
+
+        <footer></footer>
 
         <!-- Scripts -->
         <script src="/bundle.js"></script>

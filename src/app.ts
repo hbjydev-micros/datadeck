@@ -7,7 +7,6 @@ import path from "path";
 const app = new Koa();
 const router = new Router();
 
-
 const staticPath = path.join(path.dirname(__filename), "..", "dist", "static")
 app.use(koaStatic(staticPath));
 

@@ -1,5 +1,7 @@
-<title>{{ title }}</title>
+{% extends "_master.html" %}
 
-<h1>Hey</h1>
+{% block title %}Home{% endblock %}
 
-<script src="/js/bundle.js"></script>
+{% block content %}
+<h1 class="text-3xl font-bold">Hey</h1>
+{% endblock %}
