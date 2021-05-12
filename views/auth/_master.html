@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %}{% endblock %} - Datadeck</title>
+        <link rel="stylesheet" href="/main.css" />
+        {% block head %}{% endblock %}
+    </head>
+    <body class="bg-gray-50 text-gray-900">
+        <main class="justify-center items-center">
+            <h1 class="font-extrabold text-3xl text-center mb-8">{% block heading %}{% endblock %}</h1>
+
+            <div class="max-w-md w-full mx-auto bg-white p-8 shadow-lg rounded-xl">
+                {% block content %}{% endblock %}
+            </div>
+        </main>
+
+        <footer></footer>
+
+        <!-- Scripts -->
+        <script src="/bundle.js"></script>
+        {% block scripts %}
+            <!-- No custom scripts -->
+        {% endblock %}
+        <!-- End Scripts -->
+    </body>
+</html>

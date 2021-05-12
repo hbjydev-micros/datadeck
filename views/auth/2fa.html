@@ -1,0 +1,22 @@
+{% extends "auth/_master.html" %}
+
+{% block title %}2FA{% endblock %}
+{% block heading %}2-factor Verification{% endblock %}
+
+{% block content %}
+<div class="flex flex-col">
+    <form class="space-y-6" action="/2fa" method="POST">
+        <div>
+            <label class="text-sm" for="email-address">2-factor Code</label>
+            <input id="code" name="code" type="text" autofocus required class="appearance-none rounded block w-full px-3 py-2 border {% if errors.code %} border-red-500 {% else %} border-gray-300 {% endif %} placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm text-center" placeholder="123456">
+            {% if errors.code %}
+                <span class="text-sm text-red-500 mt-1 ">{{ errors.code }}</span>
+            {% endif %}
+        </div>
+
+        <div id="login-button">
+            <button class="bg-blue-500 text-white border-2 hover:bg-blue-400 hover:border-blue-500 focus:outline-none active:-translate-y-1 transition duration-100 ease-in-out border-blue-600 w-full py-2 rounded-md font-bold" value="Log in">Verify</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

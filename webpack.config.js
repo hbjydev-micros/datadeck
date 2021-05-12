@@ -8,7 +8,7 @@ const production = process.env.NODE_ENV === 'production';
 module.exports = {
     mode: production ? 'production' : 'development',
     entry: [
-        './src/static/datadeck.js',
+        './src/static/datadeck.ts',
         './src/static/datadeck.css'
     ],
     optimization: {
@@ -25,13 +25,10 @@ module.exports = {
                 use: [ MiniCssExtractPlugin.loader, "css-loader", "postcss-loader" ]
             },
             {
-                test: /\.m?js$/,
+                test: /\.ts$/,
                 exclude: /(node_modules|bower_components)/,
                 use: {
                     loader: 'babel-loader',
-                    options: {
-                        presets: ['@babel/preset-env']
-                    }
                 }
             },
             {
@@ -41,8 +38,6 @@ module.exports = {
         ]
     },
     plugins: [
-        new MiniCssExtractPlugin(),
-        new CompressionPlugin(),
-        !production && new webpack.HotModuleReplacementPlugin()
+        new MiniCssExtractPlugin()
     ],
 };
