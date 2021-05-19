@@ -1,0 +1,44 @@
+---
+version: '3.9'
+
+volumes:
+  db_data: {}
+
+networks:
+  app: {}
+
+services:
+  app:
+    command: npm run dev:backend
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/app:z
+    ports:
+      - 3000:3000
+  ldap:
+    image: osixia/openldap:1.5.0
+    ports:
+      - 389:389
+      - 636:636
+    environment:
+      LDAP_ORGANISATION: Datadeck
+      LDAP_DOMAIN: datadeck.app
+      LDAP_ADMIN_PASSWORD: datadeck
+  ldapadmin:
+    image: osixia/phpldapadmin:0.9.0
+    ports:
+      - 4000:443
+    environment:
+      PHPLDAPADMIN_LDAP_HOSTS: ldap
+  db:
+    image: postgres:12
+    environment:
+      POSTGRES_USER: datadeck
+      POSTGRES_PASSWORD: datadeck
+      POSTGRES_DB: datadeck
+    volumes:
+      - db_data:/var/lib/pgsql
+    ports:
+      - 5432:5432

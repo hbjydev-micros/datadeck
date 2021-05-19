@@ -27,23 +27,20 @@ RUN apk add build-base g++ python3 git && rm -rf /var/cache/apk/*
 RUN wget -O /usr/local/bin/dumb-init https://github.com/Yelp/dumb-init/releases/download/v1.2.5/dumb-init_1.2.5_x86_64
 RUN chmod +x /usr/local/bin/dumb-init
 
-RUN addgroup -S datadeck
-RUN adduser -S -D -h /app datadeck datadeck
-
 WORKDIR /app
 
-COPY --from=build --chown=datadeck:datadeck --chmod=0644 /build/package.json /build/package-lock.json .
-COPY --from=build --chown=datadeck:datadeck --chmod=0644 /build/dist dist
-COPY --chown=datadeck:datadeck --chmod=0644 views views
-COPY --chown=datadeck:datadeck --chmod=0644 LICENSE .
+COPY --from=build --chown=node:node --chmod=0644 /build/package.json /build/package-lock.json .
+COPY --from=build --chown=node:node --chmod=0644 /build/dist dist
+COPY --chown=node:node --chmod=0644 views views
+COPY --chown=node:node --chmod=0644 LICENSE .
 
-RUN chown -R datadeck:datadeck /app
+RUN chown -R node:node /app
 RUN find /app -type f -print0 | xargs -P 100 -0 chmod 0644
 RUN find /app -type d -print0 | xargs -P 100 -0 chmod 0755
 
 RUN npm ci --only=production
 
-USER datadeck
+USER node
 EXPOSE 3000
 ENTRYPOINT [ "/usr/local/bin/dumb-init", "--" ]
 CMD [ "node", "/app/dist/index.js" ]

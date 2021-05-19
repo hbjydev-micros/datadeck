@@ -5,10 +5,9 @@ import Router from "@koa/router";
 import koaStatic from "koa-static";
 import nunjucks from "nunjucks";
 import path from "path";
-import Snowflake from 'nodejs-snowflake';
 import bodyParser from "koa-bodyparser";
-import registerRouter from "./utilities/registerRouter";
 import authRouter from './routers/auth';
+import userRouter from './routers/users';
 import session from "koa-session";
 import authMiddleware from "./middleware/auth";
 
@@ -38,11 +37,13 @@ router.get('/', (ctx: Context) => {
   ctx.body = nunjucks.render('index.html');
 });
 
-registerRouter(app, authRouter);
+app.use(authRouter.routes());
+app.use(authRouter.allowedMethods());
+
+app.use(userRouter.routes());
+app.use(userRouter.allowedMethods());
 
 app.use(router.routes());
 app.use(router.allowedMethods());
 
 export default app;
-
-export const snowflake = new Snowflake();

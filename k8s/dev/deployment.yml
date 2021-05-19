@@ -1,0 +1,28 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: datadeck
+  name: datadeck
+  labels:
+    app: datadeck
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: datadeck
+  template:
+    metadata:
+      labels:
+        app: datadeck
+    spec:
+      containers:
+        - name: datadeck
+          image: datadeck:local
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 3000
+          resources:
+            limits:
+              cpu: '250m'
+              memory: 512Mi

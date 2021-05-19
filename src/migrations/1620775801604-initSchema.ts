@@ -1,4 +1,6 @@
-import {MigrationInterface, QueryRunner, Table} from "typeorm";
+import User from "src/models/user";
+import snowflake from "src/utilities/snowflake";
+import {getRepository, MigrationInterface, QueryRunner, Table} from "typeorm";
 
 export class initSchema1620775801604 implements MigrationInterface {
 
@@ -37,7 +39,7 @@ export class initSchema1620775801604 implements MigrationInterface {
                     type: 'varchar(24)'
                 }
             ]
-        }));
+        })); 
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {

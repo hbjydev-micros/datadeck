@@ -2,25 +2,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: datadeck
-  name: datadeck-dev
+  namespace: datadeck-dev
+  name: datadeck
   labels:
     app: datadeck
-    env: dev
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: datadeck
-      env: dev
   template:
     metadata:
       labels:
         app: datadeck
-        env: dev
     spec:
       containers:
         - name: datadeck
-          image: rg.fr-par.scw.cloud/datadeck/datadeck:latest
+          image: datadeck:latest
           ports:
             - containerPort: 3000
+          resources:
+            limits:
+              cpu: '250m'
+              memory: 512m

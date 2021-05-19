@@ -1,0 +1,9 @@
+{
+    "recommendations": [
+        "mikestead.dotenv",
+        "dbaeumer.vscode-eslint",
+        "ronnidc.nunjucks",
+        "ms-kubernetes-tools.vscode-kubernetes-tools",
+        "doggy8088.k8s-snippets"
+    ]
+}

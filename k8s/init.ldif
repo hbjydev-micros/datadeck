@@ -1,0 +1,27 @@
+#####################
+## Required Groups ##
+#####################
+
+dn: cn=accounts,dc=datadeck,dc=app
+objectclass: organizationalRole
+cn: accounts
+
+dn: cn=users,cn=accounts,dc=datadeck,dc=app
+objectclass: organizationalRole
+cn: users
+
+dn: cn=groups,cn=accounts,dc=datadeck,dc=app
+objectclass: organizationalRole
+cn: groups
+
+###############
+## Root User ##
+###############
+
+dn: uid=root,ou=datadeck-users,dc=datadeck,dc=app
+objectClass: inetOrgPerson
+description: The default admin user for the Datadeck instance.
+cn: Root
+sn: User
+uid: root
+mail: root@example.com

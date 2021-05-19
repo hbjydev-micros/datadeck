@@ -1,19 +1,14 @@
 import bcrypt from 'bcryptjs';
-import { Column, Entity, PrimaryColumn } from "typeorm";
+import { Column, Entity } from "typeorm";
 import { IsEmail, Length } from "class-validator";
+import Model from './_model';
 
 /**
  * The User model, representing a user in the database.
  * @class
  */
-@Entity()
-class User {
-    /**
-     * The user's snowflake
-     */
-    @PrimaryColumn('bigint')
-    id!: string;
-
+@Entity({ name: 'users' })
+class User extends Model {
     /**
      * The user's first name
      */

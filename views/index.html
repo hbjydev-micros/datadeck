@@ -1,7 +1,68 @@
 {% extends "_master.html" %}
+{% import "_macros.html" as macros %}
 
 {% block title %}Home{% endblock %}
 
 {% block content %}
-<h1 class="text-3xl font-bold">Hey</h1>
+{{ macros.pageTitle('Dashboard', 'An overview of your Datadeck instance.') }}
+
+<div class="p-4">
+
+    <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+        <div class="bg-white shadow-lg rounded-md w-full">
+            <div class="h-14 text-gray-900 flex items-center pl-4 border-b border-gray-200 font-bold">
+                Open purchase orders
+            </div>
+            <div class="text-gray-600 p-4">
+                15 outstanding purchase orders
+            </div>
+        </div>
+
+        <div class="bg-white shadow-lg rounded-md w-full">
+            <div class="h-14 text-gray-900 flex items-center pl-4 border-b border-gray-200 font-bold">
+                Open purchase orders
+            </div>
+            <div class="text-gray-600 p-4">
+                15 outstanding purchase orders
+            </div>
+        </div>
+
+        <div class="bg-white shadow-lg rounded-md w-full">
+            <div class="h-14 text-gray-900 flex items-center pl-4 border-b border-gray-200 font-bold">
+                Open purchase orders
+            </div>
+            <div class="text-gray-600 p-4">
+                15 outstanding purchase orders
+            </div>
+        </div>
+
+        <div class="bg-white shadow-lg rounded-md w-full">
+            <div class="h-14 text-gray-900 flex items-center pl-4 border-b border-gray-200 font-bold">
+                Open purchase orders
+            </div>
+            <div class="text-gray-600 p-4">
+                15 outstanding purchase orders
+            </div>
+        </div>
+
+        <div class="bg-white shadow-lg rounded-md w-full">
+            <div class="h-14 text-gray-900 flex items-center pl-4 border-b border-gray-200 font-bold">
+                Open purchase orders
+            </div>
+            <div class="text-gray-600 p-4">
+                15 outstanding purchase orders
+            </div>
+        </div>
+
+        <div class="bg-white shadow-lg rounded-md w-full">
+            <div class="h-14 text-gray-900 flex items-center pl-4 border-b border-gray-200 font-bold">
+                Open purchase orders
+            </div>
+            <div class="text-gray-600 p-4">
+                15 outstanding purchase orders
+            </div>
+        </div>
+    </div>
+
+</div>
 {% endblock %}

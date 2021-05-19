@@ -1,0 +1,28 @@
+{% macro pageTitle(title, subtitle='', actions=[]) %}
+<div class="w-full flex flex-col bg-white border-b border-gray-200 justify-center px-4 h-28">
+    <h1 class="text-3xl font-bold text-gray-900">{{ title }}</h1>
+    {% if subtitle %}
+        <h2 class="text-lg mt-2 text-gray-600">{{ subtitle }}</h2>
+    {% endif %}
+</div>
+{% endmacro %}
+
+{% macro field(name, fieldLabel, type='text', placeholder='') %}
+<div id="field_{{ name }}">
+{{ label(fieldLabel) }}
+{% if type === 'email' %}
+<input class="appearance-none rounded block w-full px-3 py-2 border {% if errors[name] %}border-red-500{% else %}border-gray-300{% endif %} placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" type="email" placeholder="{{ placeholder }}" />
+{% elif type === 'password' %}
+<input class="appearance-none rounded block w-full px-3 py-2 border {% if errors[name] %}border-red-500{% else %}border-gray-300{% endif %} placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" type="password" placeholder="{{ placeholder }}" />
+{% else %}
+<input class="appearance-none rounded block w-full px-3 py-2 border {% if errors[name] %}border-red-500{% else %}border-gray-300{% endif %} placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" type="text" placeholder="{{ placeholder }}" />
+{% endif %}
+{% if errors[name] %}
+<span class="text-sm text-red-500 mt-1">{{ error[name] }}</span>
+{% endif %}
+</div>
+{% endmacro %}
+
+{% macro label(value, for='') %}
+<label for="{{ for }}" class="text-sm text-gray-600">{{ value }}</label>
+{% endmacro %}
